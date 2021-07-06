@@ -21,7 +21,7 @@ class StudentsController < ApplicationController
   end
 
   def index
-    @students = Student.all
+    @students = Student.all.select {|student| student.match?(/#{params[:query]}/)}
   end
 
   def student_params
